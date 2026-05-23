@@ -1,0 +1,17 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include pyproject.toml
+include requirements.txt
+include indialend/py.typed
+recursive-include indialend *.py
+recursive-exclude tests *
+recursive-exclude venv *
+recursive-exclude data *
+recursive-exclude models *
+recursive-exclude .pytest_cache *
+recursive-exclude __pycache__ *
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .DS_Store
+global-exclude *.egg-info

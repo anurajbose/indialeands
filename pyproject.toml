@@ -1,0 +1,116 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "indialend"
+version = "1.0.0"
+description = "Unified Credit Decision Engine for Indian NBFC Lending - scoring, bureau, policy, risk, compliance"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "IndiaLend Team", email = "team@indialend.dev" },
+]
+maintainers = [
+    { name = "IndiaLend Team", email = "team@indialend.dev" },
+]
+keywords = [
+    "credit-scoring",
+    "nbfc",
+    "lending",
+    "fintech",
+    "india",
+    "rbi",
+    "cibil",
+    "bureau",
+    "risk-assessment",
+    "machine-learning",
+    "apple-silicon",
+    "metal-gpu",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.11.0",
+    "pydantic>=2.0.0",
+    "joblib>=1.3.0",
+    "python-dateutil>=2.8.0",
+]
+
+[project.optional-dependencies]
+lightgbm = ["lightgbm>=4.0.0"]
+xgboost = ["xgboost>=2.0.0"]
+gpu = ["torch>=2.0.0"]
+api = ["fastapi>=0.100.0", "uvicorn>=0.23.0"]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "build>=1.0.0",
+    "twine>=4.0.0",
+]
+all = [
+    "lightgbm>=4.0.0",
+    "xgboost>=2.0.0",
+    "torch>=2.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/indialend/indialend"
+Documentation = "https://github.com/indialend/indialend#readme"
+Repository = "https://github.com/indialend/indialend"
+Issues = "https://github.com/indialend/indialend/issues"
+Changelog = "https://github.com/indialend/indialend/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["indialend*"]
+exclude = ["tests*", "venv*", "data*", "models*"]
+
+[tool.setuptools.package-data]
+indialend = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["indialend"]
+omit = ["*/tests/*", "*/venv/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
